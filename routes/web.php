@@ -34,3 +34,11 @@ Route::get('/{provider}/redirect',[
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+//registrirame routes so resource i gi filtrirame preku auth avtentifikacijata
+Route::group(['middleware' =>'auth'],function(){
+
+    Route::resource('channels','ChannelsController');
+
+});
