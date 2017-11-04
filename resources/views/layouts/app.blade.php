@@ -74,7 +74,9 @@
 
         <div class="container">
           <div class="col-md-4">
-            <div class="panel panel-info">
+
+              <a class="btn btn-info form-control" href="{{route('discussion.create')}}">Create discussion</a><br>
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     Channels
                 </div>

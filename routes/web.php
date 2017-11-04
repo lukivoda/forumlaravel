@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/discuss', function () {
-    return view('channels.discuss');
+    return view('discuss');
 });
 
 //route koj ne nosi do provider-ot(primer-github)
@@ -44,5 +44,30 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' =>'auth'],function(){
 
     Route::resource('channels','ChannelsController');
+
+    Route::get('discussion/create',[
+
+        'uses' => "DiscussionsController@create",
+
+        'as'  => 'discussion.create'
+
+    ]);
+
+    Route::post('discussion/store',[
+
+        'uses' => "DiscussionsController@store",
+
+        'as'  => 'discussion.store'
+
+    ]);
+
+
+    Route::get('discussion/{slug}',[
+
+        'uses' => "DiscussionsController@show",
+
+        'as'  => 'discussion'
+
+    ]);
 
 });
