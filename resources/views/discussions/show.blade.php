@@ -36,7 +36,15 @@
 
             </div>
             <div class="panel-footer">
-                  LIKE
+                {{--prasuvame dali momentalniot reply e like-nat od user-ot koj momentalno e logiran(logikata e vo Reply modelot)--}}
+                  @if($r->is_liked_by_auth_user())
+                    <a href="{{route('reply.unlike',$r->id)}}" class="btn btn-info btn-xs">Unlike</a>
+                  @else
+
+                    <a href="{{route('reply.like',$r->id)}}" class="btn btn-danger btn-xs">Like</a>
+                @endif
+               {{--brojot na likes na odredeniot reply--}}
+                <span class="badge badge-info pull-right">{{$r->likes->count()}} like(s) </span>
             </div>
         </div>
     @endforeach

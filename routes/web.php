@@ -27,6 +27,15 @@ Route::get('/discuss', function () {
     return view('discuss');
 });
 
+
+Route::get('discussion/{slug}',[
+
+    'uses' => "DiscussionsController@show",
+
+    'as'  => 'discussion'
+
+]);
+
 //route koj ne nosi do provider-ot(primer-github)
 Route::get('/{provider}/auth',[
 
@@ -70,20 +79,30 @@ Route::group(['middleware' =>'auth'],function(){
     ]);
 
 
-    Route::get('discussion/{slug}',[
-
-        'uses' => "DiscussionsController@show",
-
-        'as'  => 'discussion'
-
-    ]);
-
-
     Route::post('discussion/reply/{id}',[
 
         'uses' => "DiscussionsController@reply",
 
         'as'  => 'reply.store'
+
+    ]);
+    
+    
+    Route::get('reply/like/{id}',[
+      
+        "uses" => "RepliesController@like",
+        
+        "as"   =>  "reply.like"
+        
+        
+]);
+
+    Route::get('reply/unlike/{id}',[
+
+        "uses" => "RepliesController@unlike",
+
+        "as"   =>  "reply.unlike"
+
 
     ]);
 
