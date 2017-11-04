@@ -15,6 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/forum', [
+
+    'uses' => 'ForumsController@index',
+
+    'as'   =>'forum'
+
+]);
+
 Route::get('/discuss', function () {
     return view('discuss');
 });
@@ -37,7 +45,7 @@ Route::get('/{provider}/redirect',[
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 
 //registrirame routes so resource i gi filtrirame preku auth avtentifikacijata
