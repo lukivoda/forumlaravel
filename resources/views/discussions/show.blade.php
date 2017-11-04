@@ -39,8 +39,28 @@
                   LIKE
             </div>
         </div>
-
-
     @endforeach
+
+
+
+
+                <form action="{{route('reply.store',['id' => $d->id])}}" method="post">
+
+                    {{csrf_field()}}
+
+                <div class="form-group">
+                <label for="reply">Leace a reply...</label>
+                <textarea name="reply" id="reply" cols="30" rows="10" class="form-control"></textarea>
+                </div>
+
+
+
+
+                  <div class="form-group">
+                <button class="btn btn-primary form-control" type="submit">Reply</button>
+                    </div>
+                     </form>
+
+
 
 @endsection

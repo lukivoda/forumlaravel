@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Discussion;
+use App\Reply;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,33 @@ class DiscussionsController extends Controller
 
 
         return view('discussions.show')->with('d',Discussion::where('slug',$slug)->first());
+    }
+
+
+
+    public function reply($id) {
+
+        $r = request();
+
+        $this->validate($r,[
+
+            'reply'  =>'required'
+
+        ]);
+
+        Reply::create([
+
+            'content' => $r->reply,
+
+            'user_id' => Auth::id(),
+
+            'discussion_id'  => $id
+
+        ]);
+
+
+        return redirect()->back();
+
     }
 
 
