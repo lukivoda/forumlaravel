@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/discuss', function () {
+    return view('channels.discuss');
+});
+
 //route koj ne nosi do provider-ot(primer-github)
 Route::get('/{provider}/auth',[
 
