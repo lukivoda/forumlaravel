@@ -21,5 +21,15 @@ class UsersTableSeeder extends Seeder
            'admin'    => 1
          
        ]);
+
+
+        User::create([
+            'name' => "Lucy Ris",
+            // za da bide vistinskata strana vo linkot vo  .env namesto localhost vo APP_URL ja pisuvame vistiskata strana
+            'avatar' => asset('uploads/avatars/2.jpg'),
+            'email' => 'lucy@mail.com',
+            'password' =>bcrypt('lucija'),
+
+        ]);
     }
 }
