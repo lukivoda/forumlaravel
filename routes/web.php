@@ -27,6 +27,14 @@ Route::get('/discuss', function () {
     return view('discuss');
 });
 
+Route::get('/channel/{slug}', [
+    
+    'uses' => 'ChannelsController@channel',
+    
+    'as'   => 'channel'
+    
+]);
+
 
 Route::get('discussion/{slug}',[
 

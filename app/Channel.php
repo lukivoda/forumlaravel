@@ -8,7 +8,7 @@ class Channel extends Model
 {
 
     //za da mozeme da pravime mass assignment
-    protected $fillable = ['title'];
+    protected $fillable = ['title','slug'];
 
     //eden kanal moze da ima povece diskusii
     public function discussions() {

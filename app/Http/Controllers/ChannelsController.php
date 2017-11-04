@@ -45,7 +45,9 @@ class ChannelsController extends Controller
         ]);
 
         Channel::create([
-           'title' => $request->title
+           'title' => $request->title,
+
+            'slug' => str_slug($request->title)
 
         ]);
 
@@ -98,6 +100,9 @@ class ChannelsController extends Controller
 
         $channel->title =$request->title;
 
+        $channel->slug = str_slug($request->slug);
+
+
         $channel->save();
 
 
@@ -122,5 +127,17 @@ class ChannelsController extends Controller
         Session::flash('success',"Channel is deleted");
 
         return redirect()->route('channels.index');
+    }
+    
+    
+    public function channel($slug) {
+        
+        $channel =  Channel::where('slug',$slug)->first();
+        
+        $discussions = $channel->discussions()->paginate(3);
+        
+        return view('channel')->with('discussions',$discussions);
+        
+        
     }
 }
