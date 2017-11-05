@@ -95,6 +95,10 @@ class DiscussionsController extends Controller
             'discussion_id'  => $id
 
         ]);
+        
+        $reply->user->points += 25;
+        
+        $reply->user->save();
 
         //pravime prazna niza koja treba da gi sodrzi korisnicite koi sledat(watch) odredena diskusija
         $users_watching = [];

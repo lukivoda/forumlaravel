@@ -5,9 +5,9 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <img width="40" height="40" src="{{$d->user->avatar}}" alt="{{$d->user->name}}">&nbsp;&nbsp;&nbsp;
-                <span>{{$d->user->name}},</span><span><b>{{$d->created_at->diffForHumans()}}</b></span>
+                <span>{{$d->user->name}},</span><span>(<b>{{$d->user->points}}</b>) </span>
 
-              @if($d->is_watched_by_auth_user())
+                @if($d->is_watched_by_auth_user())
                     <a href='{{route('discussion.unwatch',$d->id)}}' class="btn btn-default btn-xs pull-right">Unwatch</a>
               @else
                     <a href='{{route('discussion.watch',$d->id)}}' class="btn btn-default btn-xs pull-right">Watch</a>
@@ -20,18 +20,21 @@
                 </h3>
                 <hr>
                 <p class="text-center">{{$d->content}}</p>
-
+                <hr>
+                <span class="pull-right"><b>{{$d->created_at->diffForHumans()}}</b></span>
             </div>
-            <hr>
+
+
 
 
 
             @if($best_answer)
-                <p class="text-center"><b>Best Answer</b></p>
-                <div class="panel panel-success">
+
+                <div class="panel panel-success" style="padding:50px;">
+                    <p class="text-center"><b>Best Answer</b></p>
                     <div class="panel-heading text-center">
                         <img width="40" height="40" src="{{$best_answer->user->avatar}}" alt="{{$best_answer->user->name}}">&nbsp;&nbsp;&nbsp;
-                        <span >{{$best_answer->user->name}}</span>
+                        <span >{{$best_answer->user->name}}</span>(<b>{{$best_answer->user->points}}</b>)
 
                     </div>
                     {{--<span class="pull-right">{{'Marked as best answer'}}</span>--}}
@@ -41,6 +44,7 @@
                         </p>
 
                     </div>
+                    <span class="pull-right"><b>{{$best_answer->created_at->diffForHumans()}}</b></span>
                 </div>
 
 
@@ -65,7 +69,7 @@
             <div class="panel-heading">
 
                 <img width="40" height="40" src="{{$r->user->avatar}}" alt="{{$r->user->name}}">&nbsp;&nbsp;&nbsp;
-                <span>{{$r->user->name}},</span><span><b>{{$r->created_at->diffForHumans()}}</b></span>
+                <span>{{$r->user->name}},</span>(<b>{{$r->user->points}}</b>)
 
                {{--prasuvame dali imame najdobar odogovor(logikata e vo DiscussionsController-ot)--}}
               @if(!$best_answer)
@@ -101,6 +105,7 @@
                 <span  class="badge badge-info pull-right">{{$r->likes->count()}} like(s) </span>
 
             </div>
+            <span class="pull-right"><b>{{$r->created_at->diffForHumans()}}</b></span>
         </div>
     @endforeach
 
