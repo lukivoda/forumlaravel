@@ -133,4 +133,14 @@ Route::group(['middleware' =>'auth'],function(){
 
     ]);
 
+    Route::get('reply/best/{id}',[
+
+        "uses" => "RepliesController@best_answer",
+
+        "as"   =>  "best.answer"
+
+
+    ]);
+    
+
 });

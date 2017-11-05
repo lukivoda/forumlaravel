@@ -22,18 +22,61 @@
                 <p class="text-center">{{$d->content}}</p>
 
             </div>
+            <hr>
+
+
+
+            @if($best_answer)
+                <p class="text-center"><b>Best Answer</b></p>
+                <div class="panel panel-success">
+                    <div class="panel-heading text-center">
+                        <img width="40" height="40" src="{{$best_answer->user->avatar}}" alt="{{$best_answer->user->name}}">&nbsp;&nbsp;&nbsp;
+                        <span >{{$best_answer->user->name}}</span>
+
+                    </div>
+                    {{--<span class="pull-right">{{'Marked as best answer'}}</span>--}}
+                    <div class="panel-body">
+                        <p>
+                            <b>{{ $best_answer->content}}</b>
+                        </p>
+
+                    </div>
+                </div>
+
+
+            @endif
+
+
+
             <div class="panel-footer">
                 <a href="#" style="text-decoration: none">{{$d->replies->count()}} replies</a>
                 <a href="{{route('channel',$d->channel->slug)}}" style="text-decoration: none" class="pull-right"><b>{{$d->channel->title}}</b></a>
             </div>
+            <hr>
+
         </div>
+
+
+
 
     @foreach($d->replies as $r)
 
         <div class="panel panel-default">
             <div class="panel-heading">
+
                 <img width="40" height="40" src="{{$r->user->avatar}}" alt="{{$r->user->name}}">&nbsp;&nbsp;&nbsp;
                 <span>{{$r->user->name}},</span><span><b>{{$r->created_at->diffForHumans()}}</b></span>
+
+               {{--prasuvame dali imame najdobar odogovor(logikata e vo DiscussionsController-ot)--}}
+              @if(!$best_answer)
+
+               {{--prasuvame dali id-to na logiraniot korisnik e isto so user_id na korisnikot koj ja zapocnal(ja kreiral diskusijata)   --}}
+                 {{--i samo vo toj slucaj go pokazuvame button-ot--}}
+               @if(Auth::id() == $d->user->id)
+                <a href="{{route('best.answer',$r->id)}}" class="btn btn-info btn-xs pull-right"> Mark as best answer</a>
+               @endif
+
+                @endif
 
             </div>
 

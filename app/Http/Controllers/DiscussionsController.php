@@ -60,8 +60,16 @@ class DiscussionsController extends Controller
 
     public function show($slug) {
 
+        
+        
+        $d =Discussion::where('slug',$slug)->first();
 
-        return view('discussions.show')->with('d',Discussion::where('slug',$slug)->first());
+        //go vracame najdobriot reply(barame niz site koloni na replies tabelata na konkretnata diskusija kade best_answer e 1 )
+        $best_answer = $d->replies()->where('best_answer',1)->first();
+
+
+
+        return view('discussions.show')->with('d',$d)->with('best_answer',$best_answer);
     }
 
 
