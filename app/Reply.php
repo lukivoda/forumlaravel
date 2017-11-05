@@ -41,7 +41,7 @@ public function is_liked_by_auth_user(){
     //minuvame niz site like-ovi na odreden-iot reply
     foreach($this->likes as $like){
 
-        //ja polnime prazbnata niza so id na site  korisnici koi go like-nale odredeniot reply
+        //ja polnime praznata niza so id na site  korisnici koi go like-nale odredeniot reply
         $likers_ids[] =$like->user->id;
     }
 

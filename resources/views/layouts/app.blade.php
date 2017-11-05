@@ -75,7 +75,24 @@
         <div class="container">
           <div class="col-md-4">
 
-              <a class="btn btn-info form-control" href="{{route('discussion.create')}}">Create discussion</a><br>
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <a class="btn btn-info form-control" href="{{route('discussion.create')}}">Create discussion</a>
+
+                  </div>
+
+              <div class="panel panel-default">
+                  <div class="panel-heading">
+                      <ul class="list-group">
+                          <li class="list-group-item">
+                      <a style="text-decoration:none"  href="{{route('forum')}}">Home</a>
+                          </li>
+                      </ul>
+                  </div>
+
+
+              </div>
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Channels
@@ -93,6 +110,7 @@
             </div>
           </div>
 
+              </div>
             <div class="col-md-8">
                 @yield('content')
 

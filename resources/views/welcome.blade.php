@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-               Forumlaravel
+                    <a style="text-decoration: none;color:maroon" href="{{route('forum')}}">Forum</a>
                 </div>
 
                 <div class="links">
