@@ -24,9 +24,16 @@
                @endif
 
 
+                {{--proveruvame dali id-to na logiraniot korisnik e isto so user_id na discussion--}}
                 @if(Auth::id() == $d->user->id)
+
+                    {{--proveruvame i dali imame object reply kako best answer($best_answer)--}}
+                    @if(!$best_answer)
+
+                        {{--ako se ispolneti i dvata uslova samo togas linkot za updatiranje na diskusijata se pojavuva--}}
                 <a class="btn btn-info btn-xs pull-right" style="margin-right: 10px;" href="{{route('discussion.edit',$d->slug)}}">Update the discussion</a>
 
+                     @endif
                 @endif
 
             </div>
@@ -63,8 +70,6 @@
                     </div>
                     <div class="panel-footer "  style="margin-top: 20px;">replied: <b>{{$best_answer->created_at->diffForHumans()}}</b></div>
                 </div>
-
-
             @endif
 
 
@@ -88,7 +93,7 @@
                 <img width="40" height="40" src="{{$r->user->avatar}}" alt="{{$r->user->name}}">&nbsp;&nbsp;&nbsp;
                 <span>{{$r->user->name}},</span>(<b>{{$r->user->points}}</b>)
 
-               {{--prasuvame dali imame najdobar odogovor(logikata e vo DiscussionsController-ot)--}}
+               {{--prasuvame dali siskusijata ima najdobar odogovor(logikata e vo DiscussionsController-ot)--}}
               @if(!$best_answer)
 
                {{--prasuvame dali id-to na logiraniot korisnik e isto so user_id na korisnikot koj ja zapocnal(ja kreiral diskusijata)   --}}
@@ -97,6 +102,10 @@
                 <a href="{{route('best.answer',$r->id)}}" class="btn btn-info btn-xs pull-right"> Mark as best answer</a>
                @endif
 
+                @endif
+
+                @if(!$best_answer && Auth::id() == $r->user_id)
+                <a style="margin-right: 10px;" href="{{route('reply.edit',$r->id)}}" class="btn btn-primary btn-xs pull-right"> Edit</a>
                 @endif
 
             </div>

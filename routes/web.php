@@ -163,5 +163,24 @@ Route::group(['middleware' =>'auth'],function(){
     ]);
 
 
+    Route::get('reply/edit/{id}',[
+
+        "uses" => "RepliesController@edit",
+
+        "as"   =>  "reply.edit"
+
+
+    ]);
+
+    Route::post('reply/update/{id}',[
+
+        "uses" => "RepliesController@update",
+
+        "as"   =>  "reply.update"
+
+
+    ]);
+
+
 
 });
