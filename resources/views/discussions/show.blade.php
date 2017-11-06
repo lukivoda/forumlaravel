@@ -43,7 +43,7 @@
                     <b>{{ $d->title}}</b>
                 </h3>
                 <hr>
-                <p class="text-center">{{$d->content}}</p>
+                <p class="text-center">{!! Markdown::convertToHtml($d->content) !!}</p>
                 <hr>
                 <span class="pull-right"><b>{{$d->created_at->diffForHumans()}}</b></span>
             </div>
@@ -112,7 +112,7 @@
 
             <div class="panel-body">
 
-                <p >{{$r->content}}</p>
+                <p >{!! Markdown::convertToHtml($r->content) !!}</p>
 
             </div>
             <div class="panel-footer">

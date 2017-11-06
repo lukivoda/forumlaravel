@@ -15,6 +15,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai.min.css">
+
+
 </head>
 <body>
     <div id="app">
@@ -165,5 +168,10 @@
 
 
     </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <script> hljs.initHighlightingOnLoad(); </script>
 </body>
 </html>
