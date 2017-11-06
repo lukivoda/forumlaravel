@@ -13,7 +13,7 @@
                     <span style="margin-left: 10px" class="btn btn-success btn-xs pull-right">closed</span>
                 @else
                     {{--ako ima reply so best answer diskusijata e otvorena--}}
-                    <span  style="margin-left: 10px"class="btn btn-danger btn-xs pull-right"> open</span>
+                    <span  style="margin-left: 10px" class="btn btn-danger btn-xs pull-right"> open</span>
                 @endif
 
 

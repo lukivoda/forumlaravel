@@ -94,8 +94,22 @@
                   <div class="panel-heading">
                       <ul class="list-group">
                           <li class="list-group-item">
-                      <a style="text-decoration:none"  href="{{route('forum')}}">Home</a>
+                              <a style="text-decoration:none"  href="{{route('forum')}}">Home</a>
                           </li>
+
+                          <li class="list-group-item">
+                              <a style="text-decoration:none"  href="/forum?filter=me">My discussions</a>
+                          </li>
+
+
+                          <li class="list-group-item">
+                              <a style="text-decoration:none"  href="/forum?filter=answered">Answered discussions</a>
+                          </li>
+
+                          <li class="list-group-item">
+                              <a style="text-decoration:none"  href="/forum?filter=unanswered">Unanswered discussions</a>
+                          </li>
+
                       </ul>
                   </div>
 
