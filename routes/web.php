@@ -62,13 +62,13 @@ Route::get('/{provider}/redirect',[
 
 Auth::routes();
 
-
+Route::resource('channels','ChannelsController');
 
 
 //registrirame routes so resource i gi filtrirame preku auth avtentifikacijata
 Route::group(['middleware' =>'auth'],function(){
 
-    Route::resource('channels','ChannelsController');
+
 
     Route::get('discussion/create/new',[
 

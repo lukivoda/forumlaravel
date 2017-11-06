@@ -86,7 +86,12 @@
 
               <div class="panel panel-default">
                   <div class="panel-body">
+                      @if(Auth::check() && Auth::user()->admin ==1)
+                          <a style="margin-bottom: 10px;" class="btn btn-primary form-control" href="{{route('channels.create')}}">Create channel</a>
+                      @endif
+
                       <a class="btn btn-info form-control" href="{{route('discussion.create')}}">Create discussion</a>
+
 
                   </div>
 
