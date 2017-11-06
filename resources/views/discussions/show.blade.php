@@ -23,6 +23,12 @@
                     <a href='{{route('discussion.watch',$d->id)}}' class="btn btn-default btn-xs pull-right">Watch</a>
                @endif
 
+
+                @if(Auth::id() == $d->user->id)
+                <a class="btn btn-info btn-xs pull-right" style="margin-right: 10px;" href="{{route('discussion.edit',$d->slug)}}">Update the discussion</a>
+
+                @endif
+
             </div>
 
             <div class="panel-body">
