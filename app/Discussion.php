@@ -69,4 +69,23 @@ class Discussion extends Model
     }
 
 
+    public function hasBestAnswer() {
+
+        $result = false;
+      //minuvame niz sekoj reply na odredenata diskusija i proveruvame dali ima best_answer_reply
+        // ako ima na result mu davame vredonst true i izleguvame od loop-ot
+        foreach($this->replies as $reply){
+
+            if($reply->best_answer == 1){
+               $result = true;
+                break;
+
+            }
+
+        }
+
+        return $result;
+    }
+
+
 }

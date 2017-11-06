@@ -7,11 +7,22 @@
                 <img width="40" height="40" src="{{$d->user->avatar}}" alt="{{$d->user->name}}">&nbsp;&nbsp;&nbsp;
                 <span>{{$d->user->name}},</span><span>(<b>{{$d->user->points}}</b>) </span>
 
+                {{--prasuvame dali diskusijata ima reply koj ima best_answer=1(logikata e vo modelot)--}}
+                @if($d->hasBestAnswer())
+                    {{--ako ima reply so best answer diskusijata e zatvorena--}}
+                    <span style="margin-left: 10px" class="btn btn-success btn-xs pull-right">closed</span>
+                @else
+                    {{--ako ima reply so best answer diskusijata e otvorena--}}
+                    <span  style="margin-left: 10px"class="btn btn-danger btn-xs pull-right"> open</span>
+                @endif
+
+
                 @if($d->is_watched_by_auth_user())
                     <a href='{{route('discussion.unwatch',$d->id)}}' class="btn btn-default btn-xs pull-right">Unwatch</a>
               @else
                     <a href='{{route('discussion.watch',$d->id)}}' class="btn btn-default btn-xs pull-right">Watch</a>
                @endif
+
             </div>
 
             <div class="panel-body">
@@ -31,7 +42,7 @@
             @if($best_answer)
 
                 <div class="panel panel-success" style="padding:50px;">
-                    <p class="text-center"><b>Best Answer</b></p>
+                    <h2 class="text-center">Best Answer</h2>
                     <div class="panel-heading text-center">
                         <img width="40" height="40" src="{{$best_answer->user->avatar}}" alt="{{$best_answer->user->name}}">&nbsp;&nbsp;&nbsp;
                         <span >{{$best_answer->user->name}}</span>(<b>{{$best_answer->user->points}}</b>)
@@ -44,7 +55,7 @@
                         </p>
 
                     </div>
-                    <span class="pull-right"><b>{{$best_answer->created_at->diffForHumans()}}</b></span>
+                    <div class="panel-footer "  style="margin-top: 20px;">replied: <b>{{$best_answer->created_at->diffForHumans()}}</b></div>
                 </div>
 
 
@@ -103,9 +114,9 @@
                {{--brojot na likes na odredeniot reply--}}
                 @endif
                 <span  class="badge badge-info pull-right">{{$r->likes->count()}} like(s) </span>
-
+                   <div style="margin-top: 40px;">replied: <b>{{$r->created_at->diffForHumans()}}</b></div>
             </div>
-            <span class="pull-right"><b>{{$r->created_at->diffForHumans()}}</b></span>
+
         </div>
     @endforeach
 
@@ -117,7 +128,7 @@
                 {{csrf_field()}}
 
                 <div class="form-group">
-                    <label for="reply">Leace a reply...</label>
+                    <label for="reply">Leave a reply...</label>
                     <textarea name="reply" id="reply" cols="30" rows="10" class="form-control"></textarea>
                 </div>
 
